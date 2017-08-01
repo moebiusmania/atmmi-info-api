@@ -1,0 +1,21 @@
+{
+  "name": "site2api",
+  "author": {
+    "name": "Salvatore Laisa",
+    "email": "moebiusmania@gmail.com"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "hapi": "^16.5.0",
+    "x-ray": "^2.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
