@@ -16,14 +16,15 @@ server.connection({ port: PORT });
 
 server.route({
   method: 'GET',
-  path: '/',
+  path: '/api',
   handler: (request, reply) => {
     reply({
       status: "Up & running",
       now: new Date(),
       routes: [
-        "/traffic",
-        "/status"
+        "/api/traffic",
+        "/api/status",
+        "/api/news",
       ], 
       package: require('./package.json')
     });
@@ -32,7 +33,7 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/traffic',
+  path: '/api/traffic',
   handler: (request, reply) => {
     const selector = '#subhomepage-cx-infomobilita > div:nth-child(1) > table div.item.link-item';
     const schema = [{
@@ -49,7 +50,24 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/status',
+  path: '/api/news',
+  handler: (request, reply) => {
+    const selector = '#atm-comunicati div.news-item';
+    const schema = [{
+      text: '@text',
+      url: 'a@href'
+    }];
+    const stream = x('https://www.atm.it/it/AtmNews/Pagine/default.aspx', selector, schema ).stream();
+    stream.on('data', (data) => {
+      const json = JSON.parse(data.toString());
+      reply(json);
+    });
+  }
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/status',
   handler: (request, reply) => {
     const selector = '#StatusLinee tr';
     const schema = [{
