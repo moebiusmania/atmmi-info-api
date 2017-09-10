@@ -12,10 +12,10 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "hapi": "^16.5.0",
-    "x-ray": "^2.3.2"
+    "hapi": "16.5.2",
+    "x-ray": "2.3.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "1.12.0"
   }
 }
