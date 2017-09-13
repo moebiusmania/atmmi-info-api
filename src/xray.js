@@ -8,6 +8,6 @@ const filters = {
   }
 }
 
-export const x = Xray({
+module.exports = Xray({
   filters: filters
 });
