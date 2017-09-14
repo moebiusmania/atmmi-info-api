@@ -4,16 +4,20 @@
     "name": "Salvatore Laisa",
     "email": "moebiusmania@gmail.com"
   },
+  "engines" : { 
+    "node" : "8.5.0" 
+  },
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.mjs",
   "license": "MIT",
   "repository" :{ 
     "type" : "git", 
     "url" : "https://github.com/moebiusmania/site2api.git"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node --experimental-modules ./src/server.mjs",
+    "dev": "nodemon --experimental-modules ./src/server.mjs",
+    "test": ""
   },
   "dependencies": {
     "hapi": "16.5.2",

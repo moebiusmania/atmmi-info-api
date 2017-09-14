@@ -3,7 +3,7 @@
 Just a small test in creating a service in Node.js that turns a website in a REST API.
 
 ## Built with
-* Node.js 8.2.1
+* Node.js 8.5.x (*experimental ES modules flag enabled*)
 * [Hapi](https://hapijs.com/)
 * [X-ray](https://github.com/matthewmueller/x-ray)
 
