@@ -4,26 +4,28 @@
     "name": "Salvatore Laisa",
     "email": "moebiusmania@gmail.com"
   },
-  "engines" : { 
-    "node" : "8.5.0" 
+  "engines": {
+    "node": "8.5.0"
   },
   "version": "1.0.0",
   "main": "src/server.mjs",
   "license": "MIT",
-  "repository" :{ 
-    "type" : "git", 
-    "url" : "https://github.com/moebiusmania/site2api.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moebiusmania/site2api.git"
   },
   "scripts": {
     "start": "node --experimental-modules ./src/server.mjs",
     "dev": "nodemon --experimental-modules ./src/server.mjs",
-    "test": ""
+    "test": "ava --experimental-modules ./test/units/main.mjs"
   },
   "dependencies": {
+    "@std/esm": "0.9.2",
     "hapi": "16.5.2",
     "x-ray": "2.3.2"
   },
   "devDependencies": {
+    "ava": "0.22.0",
     "nodemon": "1.12.0"
   }
 }
