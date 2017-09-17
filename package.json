@@ -15,9 +15,9 @@
     "url": "https://github.com/moebiusmania/site2api.git"
   },
   "scripts": {
-    "start": "node --experimental-modules ./src/server.mjs",
+    "start": "node -r @std/esm ./src/server.mjs",
     "dev": "nodemon --experimental-modules ./src/server.mjs",
-    "test": "ava --experimental-modules ./test/units/main.mjs"
+    "test": "ava --verbose --experimental-modules ./test/index.js"
   },
   "dependencies": {
     "@std/esm": "0.9.2",
