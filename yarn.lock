@@ -44,7 +44,7 @@
   dependencies:
     arrify "^1.0.1"
 
-"@std/esm@false0.9.2":
+"@std/esm@0.9.2":
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.9.2.tgz#825dfadee6ba354536d275d6f7dbe1db542295b0"
 
@@ -249,7 +249,7 @@ ava-init@^0.2.0:
     read-pkg-up "^2.0.0"
     write-pkg "^3.1.0"
 
-ava@false0.22.0:
+ava@0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/ava/-/ava-0.22.0.tgz#4c28a1fdef7e749ba0c8131ac18a7ca489eef049"
   dependencies:
