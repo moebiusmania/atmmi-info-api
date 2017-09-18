@@ -1,6 +1,6 @@
-# site-2-api
+# ATM Milano - Info API
 
-Just a small test in creating a service in Node.js that turns a website in a REST API.
+Simple Node.js service that turns the [ATM Milano news website](https://www.atm.it/it/AtmNews/Pagine/default.aspx) (a messy, non-responsive website) in a REST API JSON data for quicker, simpler and cleaner consulting.
 
 ## Built with
 * Node.js 8.5.x (*experimental ES modules flag enabled*)
@@ -18,10 +18,13 @@ starts the service
 $ yarn start
 ```
 
-as above but with Nodemon
+as above but with Nodemon (for development)
 ```
 $ yarn dev
 ```
 
+## Note on ES Modules
+In building this project I wanted to work with the newly released Node.js 8.5.0 engine that supports, behind a flag, native ES modules. Since [Now](https://zeit.co/now), the service where I'm hosting the running project, still does not support versions greater than 8.4.x, I've added the [@std/esm](https://www.npmjs.com/package/@std/esm) package to make it work in *"production"*, but locally you will need version 8.5.0.
+
 ## License
-[MIT](LICENSE)
+[MIT](LICENSE).

@@ -1,5 +1,5 @@
 {
-  "name": "site2api",
+  "name": "atmmi-info-api",
   "author": {
     "name": "Salvatore Laisa",
     "email": "moebiusmania@gmail.com"
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moebiusmania/site2api.git"
+    "url": "https://github.com/moebiusmania/atmmi-info-api.git"
   },
   "scripts": {
     "start": "node -r @std/esm ./src/server.mjs",
