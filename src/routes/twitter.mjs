@@ -1,10 +1,11 @@
 'use strict';
 
 import x from './../xray';
+import { BASE } from './../constants';
 
 export default {
   method: 'GET',
-  path: '/api/twitter',
+  path: `${BASE}/twitter`,
   handler: (request, reply) => {
     const selector = 'li.js-stream-item.stream-item.stream-item';
     const schema = [{

@@ -1,10 +1,11 @@
 'use strict';
 
 import x from './../xray';
+import { BASE, NEWS_URL } from './../constants';
 
 export default {
   method: 'GET',
-  path: '/api/status',
+  path: `${BASE}/status`,
   handler: (request, reply) => {
     const selector = '#StatusLinee tr';
     const schema = [{
@@ -12,7 +13,7 @@ export default {
       text: 'div.StatusLinee_DirezioneScritta@html | trim',
       status: 'div.StatusLinee_Stretch span@html | trim'
     }];
-    const stream = x('https://www.atm.it/it/AtmNews/Pagine/default.aspx', selector, schema ).stream();
+    const stream = x(NEWS_URL, selector, schema ).stream();
     stream.on('data', (data) => {
       const json = JSON.parse(data.toString());
       const resp = json.filter(e => e.text).map(e => {

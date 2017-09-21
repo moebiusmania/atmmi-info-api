@@ -6,8 +6,8 @@ import news from './routes/news';
 import status from './routes/status';
 import traffic from './routes/traffic';
 import Hapi from 'hapi';
+import { PORT } from './constants';
 
-const PORT = 8080;
 const server = new Hapi.Server();
 
 const ROUTES = [main, twitter, news, status, traffic];

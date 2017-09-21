@@ -1,19 +1,20 @@
 'use strict';
 
 import pkg from './../../package.json';
+import { BASE } from './../constants';
 
 export default {
   method: 'GET',
-  path: '/api',
+  path: BASE,
   handler: (request, reply) => {
     reply({
       status: "Up & running",
       now: new Date(),
       routes: [
-        "/api/traffic",
-        "/api/status",
-        "/api/news",
-        "/api/twitter"
+        `${BASE}/traffic`,
+        `${BASE}/status`,
+        `${BASE}/news`,
+        `${BASE}/twitter`
       ], 
       package: pkg
     });
