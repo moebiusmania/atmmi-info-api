@@ -14,7 +14,7 @@ setHeader(server, 'Access-Control-Allow-Origin', '*');
 
 const ROUTES = [main, twitter, news, status, traffic];
 
-server.connection({ port: PORT });
+server.connection({ port: process.env.PORT });
 
 ROUTES.forEach( module => server.route(module) );
 
