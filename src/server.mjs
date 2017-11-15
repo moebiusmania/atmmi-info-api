@@ -7,7 +7,7 @@ import status from './routes/status';
 import traffic from './routes/traffic';
 import Hapi from 'hapi';
 import setHeader from 'hapi-set-header';
-import {PORT} from './configuration';
+import {PORT} from './constants';
 const CONF_PORT = process.env.PORT || PORT;
 
 console.log("Configured port " + CONF_PORT);
