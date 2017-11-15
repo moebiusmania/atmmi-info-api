@@ -21,5 +21,5 @@ setHeader(server, 'Access-Control-Allow-Origin', '*');
 
 ROUTES.forEach( module => server.route(module) );
 
-console.log(`Starting service at port ${PORT}`);
+console.log(`Starting service at port ${CONF_PORT}`);
 server.start(() => {});
