@@ -5,7 +5,7 @@
     "email": "moebiusmania@gmail.com"
   },
   "engines": {
-    "node": "8.5.0"
+    "node": "8.9"
   },
   "version": "1.0.0",
   "main": "src/server.mjs",
