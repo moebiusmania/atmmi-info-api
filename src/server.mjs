@@ -5,13 +5,14 @@ import twitter from './routes/twitter';
 import news from './routes/news';
 import status from './routes/status';
 import traffic from './routes/traffic';
+import map from './routes/map';
 import Hapi from 'hapi';
 import setHeader from 'hapi-set-header';
 import {PORT} from './constants';
 
 const server = new Hapi.Server();
 
-const ROUTES = [main, twitter, news, status, traffic];
+const ROUTES = [main, twitter, news, status, traffic, map];
 
 server.connection({ port: PORT });
 setHeader(server, 'Access-Control-Allow-Origin', '*');
