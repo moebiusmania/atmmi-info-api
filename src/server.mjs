@@ -20,5 +20,4 @@ setHeader(server, 'Access-Control-Allow-Origin', '*');
 ROUTES.forEach( module => server.route(module) );
 
 console.log(`Starting service at port ${PORT}`);
-
-server.start(() => {});
+server.start(() => {console.log(`Server started at port ${PORT}`)});
