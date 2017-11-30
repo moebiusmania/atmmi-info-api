@@ -1,19 +1,28 @@
 'use strict';
 
 import x from './../xray';
-import { BASE, NEWS_URL } from './../constants';
+import { BASE, TRAFFIC_URL } from './../constants';
 
 export default {
   method: 'GET',
   path: `${BASE}/traffic`,
   handler: (request, reply) => {
-    const selector = '#subhomepage-cx-infomobilita > div:nth-child(1) > table div.item.link-item';
+    const selector = '#atm-pager-top table.NewsGrid tbody tr';
     const schema = [{
-      text: 'a@html',
-      url: 'a@href'
+      title: 'td.Infomobilita-Titolo@text | trim',
+      url: 'td.Infomobilita-Titolo a@href',
+      validityFrom: 'td.Infomobilita-Data@text | trim',
+      validityTo: 'td.Infomobilita-DataScadenza@text | trim'
     }];
-    const stream = x(NEWS_URL, selector, schema ).stream();
+    const stream = x(TRAFFIC_URL, selector, schema ).stream();
     stream.on('data', (data) => {
+      data.forEach(e => {
+        let fromDate = e.validityFrom.match(/\d+/g);
+        let toDate = e.validityTo.match(/\d+/g);
+        e.validityFrom = new Date(fromDate[2], fromDate[1]-1, fromDate[0]);
+        e.validityTo = new Date(toDate[2], fromDate[1]-1, fromDate[0]);
+      });
+      data.sort((e1,e2) => e1.validityTo - e2.validityTo);
       const json = JSON.parse(data.toString());
       reply(json);
     });
