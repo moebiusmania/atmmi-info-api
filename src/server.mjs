@@ -12,7 +12,6 @@ import {PORT} from './constants';
 const CONF_PORT = process.env.PORT || PORT;
 
 const server = new Hapi.Server();
-setHeader(server, 'Access-Control-Allow-Origin', '*');
 
 const ROUTES = [main, twitter, news, status, traffic];
 
