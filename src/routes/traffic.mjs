@@ -23,7 +23,7 @@ export default {
         e.validityFrom = new Date(fromDate[2], fromDate[1]-1, fromDate[0]);
         e.validityTo = new Date(toDate[2], fromDate[1]-1, fromDate[0]);
       });
-      json.sort((e1,e2) => e1.validityTo - e2.validityTo);
+      json.sort((e1,e2) => e2.validityTo - e1.validityTo);
       reply(json);
     });
   }
