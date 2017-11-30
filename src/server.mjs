@@ -9,17 +9,15 @@ import Hapi from 'hapi';
 import setHeader from 'hapi-set-header';
 import {PORT} from './constants';
 
-const CONF_PORT = process.env.PORT || PORT;
-
 const server = new Hapi.Server();
 
 const ROUTES = [main, twitter, news, status, traffic];
 
-server.connection({ port: CONF_PORT });
+server.connection({ port: PORT });
 setHeader(server, 'Access-Control-Allow-Origin', '*');
 
 ROUTES.forEach( module => server.route(module) );
 
-console.log(`Starting service at port ${CONF_PORT}`);
+console.log(`Starting service at port ${PORT}`);
 
 server.start(() => {});
