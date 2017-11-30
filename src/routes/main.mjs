@@ -14,7 +14,8 @@ export default {
         `${BASE}/traffic`,
         `${BASE}/status`,
         `${BASE}/news`,
-        `${BASE}/twitter`
+        `${BASE}/twitter`,
+        `${BASE}/map`
       ], 
       package: pkg
     });
