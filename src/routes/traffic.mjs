@@ -16,14 +16,14 @@ export default {
     }];
     const stream = x(TRAFFIC_URL, selector, schema ).stream();
     stream.on('data', (data) => {
-      data.forEach(e => {
+      const json = JSON.parse(data.toString());
+      json.forEach(e => {
         let fromDate = e.validityFrom.match(/\d+/g);
         let toDate = e.validityTo.match(/\d+/g);
         e.validityFrom = new Date(fromDate[2], fromDate[1]-1, fromDate[0]);
         e.validityTo = new Date(toDate[2], fromDate[1]-1, fromDate[0]);
       });
-      data.sort((e1,e2) => e1.validityTo - e2.validityTo);
-      const json = JSON.parse(data.toString());
+      json.sort((e1,e2) => e1.validityTo - e2.validityTo);
       reply(json);
     });
   }
