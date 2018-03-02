@@ -27,8 +27,6 @@
   "devDependencies": {
     "ava": "0.25.0",
     "ava-http": "1.0.0",
-    "babel-preset-env": "1.6.1",
-    "babel-register": "6.26.0",
     "nodemon": "1.17.1"
   }
 }
