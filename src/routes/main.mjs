@@ -6,8 +6,8 @@ import { BASE } from './../constants';
 export default {
   method: 'GET',
   path: BASE,
-  handler: (request, reply) => {
-    reply({
+  handler: (request, h) => {
+    return {
       status: "Up & running",
       now: new Date(),
       routes: [
@@ -17,6 +17,6 @@ export default {
         `${BASE}/twitter`
       ], 
       package: pkg
-    });
+    };
   }
 }
