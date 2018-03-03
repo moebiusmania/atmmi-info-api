@@ -1,14 +1,14 @@
 'use strict';
 
-import pkg from './../../package.json';
-import { BASE } from './../constants';
+import pkg from './../../package';
+import {BASE} from './../constants';
 
 export default {
   method: 'GET',
   path: BASE,
-  handler: (request, reply) => {
-    reply({
-      status: "Up & running",
+  handler: () => {
+    return {
+      status: 'Up & running',
       now: new Date(),
       routes: [
         `${BASE}/traffic`,
@@ -18,6 +18,6 @@ export default {
         `${BASE}/map`
       ], 
       package: pkg
-    });
+    };
   }
-}
+};

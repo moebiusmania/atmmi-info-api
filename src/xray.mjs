@@ -3,11 +3,7 @@
 import Xray from 'x-ray';
 
 const filters = {
-  trim: (value) => {
-    return typeof value === 'string' ? value.trim() : value
-  }
-}
+  trim: value => typeof value === 'string' ? value.trim() : value
+};
 
-export default Xray({
-  filters: filters
-});
+export default Xray({filters}); // eslint-disable-line new-cap

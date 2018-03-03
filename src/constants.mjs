@@ -8,4 +8,4 @@ const MAP_URL = 'https://www.atm.it/it/ViaggiaConNoi/Pagine/SchemaRete.aspx';
 
 export {
   BASE, PORT, NEWS_URL, TRAFFIC_URL, MAP_URL
-}
+};

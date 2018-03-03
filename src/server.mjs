@@ -1,23 +1,28 @@
 'use strict';
 
+import Hapi from 'hapi';
 import main from './routes/main';
 import twitter from './routes/twitter';
 import news from './routes/news';
 import status from './routes/status';
 import traffic from './routes/traffic';
 import map from './routes/map';
-import Hapi from 'hapi';
-import setHeader from 'hapi-set-header';
 import {PORT} from './constants';
 
 const server = new Hapi.Server();
+const CONF_PORT = process.env.PORT || PORT;
+
+const server = new Hapi.Server({
+  host: 'localhost',
+  port: CONF_PORT
+});
 
 const ROUTES = [main, twitter, news, status, traffic, map];
 
-server.connection({ port: PORT });
-setHeader(server, 'Access-Control-Allow-Origin', '*');
+const routeOpts = {cors: {origin: 'ignore'}};
 
-ROUTES.forEach( module => server.route(module) );
+const cors = ROUTES.map(route => new Object({...route, options: routeOpts}));
 
-console.log(`Starting service at port ${PORT}`);
-server.start(() => {console.log(`Server started at port ${PORT}`)});
+cors.forEach(module => server.route(module));
+
+server.start(() => {console.log(`Server started at port ${CONF_PORT}`)});
