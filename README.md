@@ -1,5 +1,7 @@
 # ATM Milano - Info API
 
+[![Build Status](https://travis-ci.org/moebiusmania/atmmi-info-api.svg?branch=master)](https://travis-ci.org/moebiusmania/atmmi-info-api)
+
 > This project is not officially affiliated with ATM Milano in any ways, it's just a part-time project.
 
 Simple Node.js service that turns the [ATM Milano news website](https://www.atm.it/it/AtmNews/Pagine/default.aspx) (a messy, non-responsive website) in a REST API JSON data for quicker, simpler and cleaner consulting.
