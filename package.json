@@ -18,6 +18,8 @@
     "start": "node -r @std/esm ./src/server.mjs",
     "dev": "nodemon --experimental-modules ./src/server.mjs",
     "test:unit": "ava ./test/index.js --verbose",
+    "lint": "xo ./src/ ./test",
+    "pretest": "npm run lint",
     "test": "npm start & npm run test:unit"
   },
   "dependencies": {
@@ -28,6 +30,15 @@
   "devDependencies": {
     "ava": "0.25.0",
     "ava-http": "1.0.0",
-    "nodemon": "1.17.1"
+    "nodemon": "1.17.1",
+    "xo": "0.20.3"
+  },
+  "xo": {
+    "space": true,
+    "extensions": ["js", "mjs"],
+    "rules": {
+      "no-new-object": 0,
+      "unicorn/regex-shorthand": 0
+    }
   }
 }

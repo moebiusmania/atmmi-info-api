@@ -15,7 +15,7 @@ test('Base route', async t => {
 
 test('/traffic', async t => {
   const res = await http.get(base + '/traffic');
-  const first = res[0];
+  const [first] = res;
 
   t.truthy(res.length);
   t.truthy(first.text && first.url);
@@ -23,7 +23,7 @@ test('/traffic', async t => {
 
 test('/status', async t => {
   const res = await http.get(base + '/status');
-  const first = res[0];
+  const [first] = res;
 
   t.true(res.length && res.length === 11);
   t.truthy(first.line && first.text && first.status);
@@ -31,7 +31,7 @@ test('/status', async t => {
 
 test('/news', async t => {
   const res = await http.get(base + '/news');
-  const first = res[0];
+  const [first] = res;
 
   t.true(res.length && res.length === 4);
   t.truthy(first.text && first.url);
@@ -39,7 +39,7 @@ test('/news', async t => {
 
 test('/twitter', async t => {
   const res = await http.get(base + '/twitter');
-  const first = res[0];
+  const [first] = res;
 
   t.true(res.length && res.length === 20);
   t.truthy(first.text && first.url);

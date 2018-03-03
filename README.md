@@ -22,13 +22,19 @@ starts the service
 $ yarn start
 ```
 
-as above but with Nodemon (for development)
+## Development
+Similar to `start` but with Nodemon
 ```
 $ yarn dev
+```
+
+Run lint (with `XO`) & test suite (with `Ava`)
+```
+$ yarn test
 ```
 
 ## Note on ES Modules
 In building this project I wanted to work with the (at the time) newly released Node.js 8.9.0 engine that supports, behind a flag, native ES modules. Since [Now](https://zeit.co/now), the service where I'm hosting the running project, still does not support versions greater than 8.4.x, I've added the [@std/esm](https://www.npmjs.com/package/@std/esm) package to make it work in *"production"*, but locally you will need version 8.9.0 or greater.
 
 ## License
-[MIT](LICENSE).
+Released under the [MIT](LICENSE) license.

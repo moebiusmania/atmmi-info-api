@@ -1,17 +1,18 @@
 'use strict';
 
 import x from './../xray';
-import { BASE, NEWS_URL } from './../constants';
+import {BASE, NEWS_URL} from './../constants';
 
 export default {
   method: 'GET',
   path: `${BASE}/traffic`,
-  handler: (request, h) => {
+  handler: async () => {
     const selector = '#subhomepage-cx-infomobilita > div:nth-child(1) > table div.item.link-item';
     const schema = [{
       text: 'a@html',
       url: 'a@href'
     }];
-    return x(NEWS_URL, selector, schema ).then( data => data);
+    const data = await x(NEWS_URL, selector, schema);
+    return data;
   }
-}
+};
