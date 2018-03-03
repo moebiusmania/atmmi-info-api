@@ -17,7 +17,8 @@
   "scripts": {
     "start": "node -r @std/esm ./src/server.mjs",
     "dev": "nodemon --experimental-modules ./src/server.mjs",
-    "test": "npm start & ava ./test/index.js --verbose "
+    "test:unit": "ava ./test/index.js --verbose",
+    "test": "npm start & npm run test:unit"
   },
   "dependencies": {
     "@std/esm": "0.23.4",
