@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@hapi/hapi": "20.1.5",
-    "x-ray": "https://github.com/matthewmueller/x-ray"
+    "x-ray": "2.3.4"
   },
   "devDependencies": {
     "ava": "3.15.0",
