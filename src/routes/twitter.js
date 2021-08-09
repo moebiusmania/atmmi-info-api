@@ -1,9 +1,9 @@
 'use strict';
 
-import x from './../xray';
-import {BASE} from './../constants';
+const x = require('./../xray');
+const { BASE } = require('./../constants');
 
-export default {
+module.exports = {
   method: 'GET',
   path: `${BASE}/twitter`,
   handler: async () => {

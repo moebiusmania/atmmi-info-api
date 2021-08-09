@@ -1,7 +1,7 @@
 'use strict';
 
-import test from 'ava';
-import http from 'ava-http';
+const test = require('ava');
+const http = require('ava-http');
 
 const base = 'http://localhost:8080/v1';
 
@@ -37,6 +37,7 @@ test('/news', async t => {
   t.truthy(first.text && first.url);
 });
 
+/*
 test('/twitter', async t => {
   const res = await http.get(base + '/twitter');
   const [first] = res;
@@ -44,3 +45,4 @@ test('/twitter', async t => {
   t.true(res.length && res.length === 20);
   t.truthy(first.text && first.url);
 });
+*/

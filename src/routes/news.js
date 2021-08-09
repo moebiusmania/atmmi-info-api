@@ -1,9 +1,9 @@
 'use strict';
 
-import x from './../xray';
-import {BASE, NEWS_URL} from './../constants';
+const x = require('./../xray');
+const { BASE, NEWS_URL } = require('./../constants');
 
-export default {
+module.exports = {
   method: 'GET',
   path: `${BASE}/news`,
   handler: async () => {

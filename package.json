@@ -5,37 +5,38 @@
     "email": "moebiusmania@gmail.com"
   },
   "engines": {
-    "node": "9"
+    "node": "16"
   },
-  "version": "1.1.0",
-  "main": "src/server.mjs",
+  "version": "1.2.0",
+  "main": "src/server.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/moebiusmania/atmmi-info-api.git"
   },
   "scripts": {
-    "start": "node -r @std/esm ./src/server.mjs",
-    "dev": "nodemon --experimental-modules ./src/server.mjs",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
     "test:unit": "ava ./test/index.js --verbose",
     "lint": "xo ./src/ ./test",
-    "pretest": "npm run lint",
     "test": "npm start & npm run test:unit"
   },
   "dependencies": {
-    "@std/esm": "0.23.4",
-    "hapi": "17.2.1",
+    "@hapi/hapi": "20.1.5",
     "x-ray": "https://github.com/matthewmueller/x-ray"
   },
   "devDependencies": {
-    "ava": "0.25.0",
+    "ava": "3.15.0",
     "ava-http": "1.0.0",
-    "nodemon": "1.17.1",
-    "xo": "0.20.3"
+    "nodemon": "2.0.12",
+    "xo": "0.44.0"
   },
   "xo": {
     "space": true,
-    "extensions": ["js", "mjs"],
+    "extensions": [
+      "js",
+      "mjs"
+    ],
     "rules": {
       "no-new-object": 0,
       "unicorn/regex-shorthand": 0

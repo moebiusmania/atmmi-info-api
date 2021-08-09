@@ -1,9 +1,10 @@
 'use strict';
 
-import pkg from './../../package';
-import {BASE} from './../constants';
+//import pkg from './../../package';
+const pkg = require('./../../package.json');
+const { BASE } = require('./../constants');
 
-export default {
+module.exports = {
   method: 'GET',
   path: BASE,
   handler: () => {
