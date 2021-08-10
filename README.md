@@ -1,5 +1,7 @@
 # ATM Milano - Info API
 
+[![Test before deploy](https://github.com/moebiusmania/atmmi-info-api/actions/workflows/push.yml/badge.svg)](https://github.com/moebiusmania/atmmi-info-api/actions/workflows/push.yml)
+
 > This project is not officially affiliated with ATM Milano in any ways, it's just a part-time project.
 
 Simple Node.js service that turns the [ATM Milano news website](https://www.atm.it/it/AtmNews/Pagine/default.aspx) (a messy, non-responsive website) in a REST API JSON data for quicker, simpler and cleaner consulting.

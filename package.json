@@ -19,7 +19,7 @@
     "dev": "NODE_ENV=development nodemon ./src/server.js",
     "test:unit": "ava ./test/index.js --verbose",
     "lint": "xo ./src/ ./test",
-    "test": "npm start & npm run test:unit"
+    "test": "NODE_ENV=test node ./src/server.js & npm run test:unit"
   },
   "dependencies": {
     "@hapi/hapi": "20.1.5",

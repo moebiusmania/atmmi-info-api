@@ -3,7 +3,7 @@
 const test = require('ava');
 const http = require('ava-http');
 
-const base = 'http://localhost:8080/v1';
+const base = 'http://localhost:8080';
 
 test('Base route', async t => {
   const res = await http.get(base);
