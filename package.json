@@ -15,8 +15,8 @@
     "url": "https://github.com/moebiusmania/atmmi-info-api.git"
   },
   "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js",
+    "start": "NODE_ENV=production node ./src/server.js",
+    "dev": "NODE_ENV=development nodemon ./src/server.js",
     "test:unit": "ava ./test/index.js --verbose",
     "lint": "xo ./src/ ./test",
     "test": "npm start & npm run test:unit"

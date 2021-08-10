@@ -1,11 +1,11 @@
 'use strict';
 
 const x = require('./../xray');
-const { BASE, NEWS_URL } = require('./../constants');
+const { NEWS_URL } = require('./../constants');
 
 module.exports = {
   method: 'GET',
-  path: `${BASE}/status`,
+  path: `/status`,
   handler: async () => {
     const selector = '#StatusLinee tr';
     const schema = [{

@@ -1,11 +1,10 @@
 'use strict';
 
 const x = require('./../xray');
-const { BASE } = require('./../constants');
 
 module.exports = {
   method: 'GET',
-  path: `${BASE}/twitter`,
+  path: `/twitter`,
   handler: async () => {
     const selector = 'li.js-stream-item.stream-item.stream-item';
     const schema = [{

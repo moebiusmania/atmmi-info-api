@@ -1,11 +1,11 @@
 'use strict';
 
 const x = require('./../xray');
-const { BASE, NEWS_URL } = require('./../constants');
+const { NEWS_URL } = require('./../constants');
 
 module.exports = {
   method: 'GET',
-  path: `${BASE}/news`,
+  path: `/news`,
   handler: async () => {
     const selector = '#atm-comunicati div.news-item';
     const schema = [{
