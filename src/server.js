@@ -9,10 +9,9 @@ const twitter = require('./routes/twitter');
 const { PORT } = require('./constants');
 
 const CONF_PORT = process.env.PORT || PORT;
-const HOST = process.env.NODE_ENV === 'production' ? 'atmmi-info-api.herokuapp.com' : 'localhost';
+const HOST = process.env.HOST || 'localhost';
 
 const server = new Hapi.Server({
-  host: HOST,
   port: CONF_PORT
 });
 
