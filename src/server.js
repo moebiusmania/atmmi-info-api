@@ -5,17 +5,16 @@ const main = require('./routes/main');
 const news = require('./routes/news');
 const status = require('./routes/status');
 const traffic = require('./routes/traffic');
-const twitter = require('./routes/twitter');
 const { PORT } = require('./constants');
 
 const CONF_PORT = process.env.PORT || PORT;
-const HOST = process.env.HOST || 'localhost';
 
-const server = new Hapi.Server({
-  port: CONF_PORT
-});
+const CONFIG = process.env.NODE_ENV === 'production' ? 
+  { port: CONF_PORT } : { port: CONF_PORT, host: 'localhost' };
 
-const ROUTES = [main, twitter, news, status, traffic];
+const server = new Hapi.Server(CONFIG);
+
+const ROUTES = [main, news, status, traffic];
 
 const routeOpts = { cors: { origin: 'ignore' } };
 

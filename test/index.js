@@ -9,8 +9,8 @@ test('Base route', async t => {
   const res = await http.get(base);
 
   t.true(res.status === 'Up & running');
-  t.true(res.routes.length === 4);
-  t.true(typeof res.package === 'object');
+  t.true(res.routes.length === 3);
+  t.true(typeof res.meta === 'object');
 });
 
 test('/traffic', async t => {
@@ -36,13 +36,3 @@ test('/news', async t => {
   t.true(res.length && res.length === 4);
   t.truthy(first.text && first.url);
 });
-
-/*
-test('/twitter', async t => {
-  const res = await http.get(base + '/twitter');
-  const [first] = res;
-
-  t.true(res.length && res.length === 20);
-  t.truthy(first.text && first.url);
-});
-*/

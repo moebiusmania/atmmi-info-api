@@ -1,6 +1,10 @@
 'use strict';
 
+const omit = require('lodash/omit');
+
 const pkg = require('./../../package.json');
+
+const meta = omit(pkg, ['scripts', 'dependencies', 'devDependencies', 'xo', 'main']);
 
 module.exports = {
   method: 'GET',
@@ -12,10 +16,9 @@ module.exports = {
       routes: [
         `/traffic`,
         `/status`,
-        `/news`,
-        `/twitter`
+        `/news`
       ],
-      package: pkg
+      meta
     };
   }
 };
