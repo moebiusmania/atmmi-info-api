@@ -1,18 +1,16 @@
-'use strict';
-
-const x = require('./../xray');
-const { NEWS_URL } = require('./../constants');
+const x = require('../xray');
+const { NEWS_URL } = require('../constants');
 
 module.exports = {
   method: 'GET',
-  path: `/news`,
+  path: '/news',
   handler: async () => {
     const selector = '#atm-comunicati div.news-item';
     const schema = [{
       text: '@text',
-      url: 'a@href'
+      url: 'a@href',
     }];
     const data = await x(NEWS_URL, selector, schema);
     return data;
-  }
+  },
 };

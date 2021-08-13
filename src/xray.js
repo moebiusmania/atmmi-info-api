@@ -1,9 +1,7 @@
-'use strict';
-
 const Xray = require('x-ray');
 
 const filters = {
-  trim: value => typeof value === 'string' ? value.trim() : value
+  trim: (value) => ((typeof value === 'string') ? value.trim() : value),
 };
 
-module.exports = Xray({ filters }); // eslint-disable-line new-cap
+module.exports = Xray({ filters });
