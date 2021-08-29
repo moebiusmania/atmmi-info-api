@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -73,18 +74,20 @@ func statusRoute(c echo.Context) error {
 		log.Fatal(err)
 	}
 
+	re := regexp.MustCompile(`/([M][0-9])\w/g`)
+
 	doc.Find("#StatusLinee tr").Each(func(index int, item *goquery.Selection) {
 		line, _ := item.Find("div.StatusLinee_Stretch").Attr("id")
 		text := item.Find("div.StatusLinee_DirezioneScritta").Text()
 		status := item.Find("div.StatusLinee_Stretch").Text()
 
-		singleLine := LineStatus{
-			Text:   strings.TrimSpace(text),
-			Line:   line,
-			Status: strings.TrimSpace(status),
-		}
-
 		if len(line) > 0 {
+			singleLine := LineStatus{
+				Text:   strings.TrimSpace(text),
+				Line:   re.FindStringSubmatch(line)[0],
+				Status: strings.TrimSpace(status),
+			}
+
 			lines = append(lines, singleLine)
 		}
 	})
