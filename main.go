@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
+	"strings"
 	"time"
 
-	"github.com/gocolly/colly"
+	"github.com/PuerkitoBio/goquery"
 	"github.com/labstack/echo/v4"
 )
 
@@ -18,6 +19,12 @@ type Service struct {
 type News struct {
 	Text string `json:"text"`
 	Url  string `json:"url"`
+}
+
+type LineStatus struct {
+	Line   string `json:"line"`
+	Text   string `json:"text"`
+	Status string `json:"status"`
 }
 
 const DOMAIN string = "https://www.atm.it"
@@ -33,41 +40,64 @@ func mainRoute(c echo.Context) error {
 	return c.JSON(http.StatusOK, s)
 }
 
+// handling the /news route
 func newsRoute(c echo.Context) error {
 	news := make([]News, 0)
-	collector := colly.NewCollector(
-		colly.AllowedDomains(DOMAIN),
-	)
 
-	fmt.Println(news)
+	doc, err := goquery.NewDocument(URL)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	collector.OnHTML("#atm-comunicati div.news-item", func(element *colly.HTMLElement) {
-		newsText := element.Text
-		newsUrl := element.Attr("href")
+	doc.Find("#atm-comunicati div.news-item").Each(func(index int, item *goquery.Selection) {
+		text := item.Text()
+		url, _ := item.Attr("href")
 
 		singleNews := News{
-			Text: newsText,
-			Url:  newsUrl,
+			Text: text,
+			Url:  url,
 		}
 
 		news = append(news, singleNews)
 	})
 
-	collector.OnRequest(func(request *colly.Request) {
-		fmt.Println("Visiting", request.URL.String())
+	return c.JSON(http.StatusOK, news)
+}
+
+// handling the /status route
+func statusRoute(c echo.Context) error {
+	lines := make([]LineStatus, 0)
+
+	doc, err := goquery.NewDocument(URL)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	doc.Find("#StatusLinee tr").Each(func(index int, item *goquery.Selection) {
+		line, _ := item.Find("div.StatusLinee_Stretch").Attr("id")
+		text := item.Find("div.StatusLinee_DirezioneScritta").Text()
+		status := item.Find("div.StatusLinee_Stretch").Text()
+
+		singleLine := LineStatus{
+			Text:   strings.TrimSpace(text),
+			Line:   line,
+			Status: strings.TrimSpace(status),
+		}
+
+		if len(line) > 0 {
+			lines = append(lines, singleLine)
+		}
 	})
 
-	go collector.Visit(URL)
-
-	return c.JSON(http.StatusOK, news)
+	return c.JSON(http.StatusOK, lines)
 }
 
 // Server bootstrapping
 func main() {
-	e := echo.New()           // initialize Echo
-	e.GET("/", mainRoute)     // adding routes
-	e.GET("/news", newsRoute) // adding routes
-	//e.GET("/status", statusRoute) // adding routes
+	e := echo.New()               // initialize Echo
+	e.GET("/", mainRoute)         // adding routes
+	e.GET("/news", newsRoute)     // adding routes
+	e.GET("/status", statusRoute) // adding routes
 	//e.GET("/traffic", trafficRoute) // adding routes
 
 	e.Logger.Fatal(e.Start(":8080")) // starting server
