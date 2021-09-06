@@ -1,37 +1,31 @@
 # ATM Milano - Info API
 
-[![Test before deploy](https://github.com/moebiusmania/atmmi-info-api/actions/workflows/push.yml/badge.svg)](https://github.com/moebiusmania/atmmi-info-api/actions/workflows/push.yml)
-
 > This project is not officially affiliated with ATM Milano in any ways, it's just a part-time project.
 
-Simple Node.js service that turns the [ATM Milano news website](https://www.atm.it/it/AtmNews/Pagine/default.aspx) (a messy, non-responsive website) in a REST API JSON data for quicker, simpler and cleaner consulting.
+Simple Go service that turns the [ATM Milano news website](https://www.atm.it/it/AtmNews/Pagine/default.aspx) (*a messy and non-responsive website*) in a REST API JSON data for quicker, simpler and cleaner consulting.
 
 ## Built with
-* Node.js 16.x
-* [Hapi](https://hapijs.com/)
-* [X-ray](https://github.com/matthewmueller/x-ray)
+* [Go](https://golang.org/) v1.16+
+* [Echo](https://echo.labstack.com/) - routing
+* [goquery](https://pkg.go.dev/github.com/PuerkitoBio/goquery) - parse HTML
 
 ## Install & run
-Clone and run 
+Clone the repo
 ```
-$ npm ci
+$ git clone https://github.com/moebiusmania/atmmi-info-api
 ```
 
-starts the service
+locally starts the service
 ```
-$ npm start
+$ go run .
 ```
 
 ## Development
-Similar to `start` but with Nodemon
+Build the binaries
 ```
-$ npm run dev
+$ go build .
 ```
 
-Run lint (with `XO`) & test suite (with `Ava`)
-```
-$ npm test
-```
 
 ## License
 Released under the [MIT](LICENSE) license.
